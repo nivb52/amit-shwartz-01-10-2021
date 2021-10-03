@@ -1,0 +1,43 @@
+.header {
+    width: 100%;
+    padding: 0 15px;
+    background-color: #212121;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    button {
+        color: #D9CAB3;
+        border-radius: 0;
+        padding-bottom: 0;
+    }
+
+    .selected {
+        color: #6D9886;
+        border-bottom:2px solid #6D9886;
+
+    }
+
+    &__gray {
+        background-color: #6D9886;
+        padding: 0 100px;
+
+        button {
+            color: #212121;
+        }
+
+        .selected {
+            color: #ffffff;
+            border-bottom:2px solid #ffffff;
+        }
+    }
+}
+
+.site-layout {
+    min-height: calc(100vh - 60px);
+}
+
+.site-content {
+    height: 100%;
+}

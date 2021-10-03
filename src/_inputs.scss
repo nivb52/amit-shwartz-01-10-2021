@@ -1,0 +1,31 @@
+.search-container {
+    width: calc(100% - 1.8rem);
+    transition: width ease-in-out 0.3s;
+    border: 1px solid $color-background-gray-dark;
+    border-radius: 5px;
+    div {
+      display: inline-block;
+      padding: 7px 11px;
+      outline: none;
+      background: $color-background-gray-light;
+      font-size: 17px;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      &:hover {
+        background: #ccc;
+      }
+    }
+}
+
+input[type="text"] {
+    display: inline-block;
+    width: calc(100% - 39px);
+    padding: 8.5px;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    &:focus {
+      outline: none;
+    }
+  }

@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Purchese items App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This App allows you to manege your own personal account and expances of online shopping and delivery.
+
+## Architecture 
+state menegment with redux,
+design with mui librery and SASS,
+APIs - http://api.exchangeratesapi.io/v1
+      https://fakestoreapi.com
+
 
 ## Available Scripts
 

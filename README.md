@@ -1,5 +1,5 @@
 # Purchese items App
-This App allows you to manage your own personal account and expenses of online shopping and delivery.
+This App allows you to manage your own personal account and expenses of online shopping and monitor delivery.
 
 ## Architecture 
 state menegment with redux,

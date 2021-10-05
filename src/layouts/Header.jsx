@@ -1,7 +1,7 @@
 //Header.jsx
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Select from "react-select";
@@ -18,6 +18,12 @@ const options = [SHEKEL_SIGN, DOLLAR_SIGN];
 const Header = ({ setCurrency, currentCurrency }) => {
   //state
   const [active, setActive] = useState(menuItemTitles[0].id);
+
+  useEffect(() => {
+    if(window.location.pathname==="/stores"){
+      setActive(menuItemTitles[1].id)
+    }
+  }, [])
 
   return (
     <div className="header">

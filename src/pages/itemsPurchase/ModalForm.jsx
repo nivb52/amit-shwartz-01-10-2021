@@ -36,6 +36,7 @@ const ModalForm = ({
       onClose();
     }
     setFormValues(initialState);
+    setFormErrors({});
   };
 
   const renderError = (name) => {
@@ -108,13 +109,13 @@ const ModalForm = ({
               onChange={(event, value) =>
                 setFormValues({
                   ...formValues,
-                  title: value.title,
-                  price: value.price,
+                  title: getSafe(() => value.title, ""),
+                  price: getSafe(() => value.price, ""),
                 })
               }
               options={itemsList.map((x) => ({ ...x, label: x.title }))}
             />
-            {renderError("item")}
+            {renderError("title")}
           </label>
           <label>
             * Store

@@ -12,6 +12,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { ArrowDropDown, ArrowDropUp, ImportExport } from "@mui/icons-material";
 
 function DefaultColumnFilter({ column: { setFilter } }) {
   return (
@@ -80,7 +81,26 @@ const ReactTable = ({
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <TableCell {...column.getHeaderProps()}>
+                <TableCell
+                  {...(column.id === "action" || column.id === "title_0"
+                    ? { ...column.getHeaderProps() }
+                    : {
+                        ...column.getHeaderProps(column.getSortByToggleProps()),
+                      })}
+                >
+                  <span style={{ margin: "0 5px" }}>
+                    {column.id === "action" || column.id === "title_0" ? (
+                      <></>
+                    ) : column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDropDown sx={{ fontSize: 20 }}/>
+                      ) : (
+                        <ArrowDropUp   sx={{ fontSize: 20 }}/>
+                      )
+                    ) : (
+                      <ImportExport  sx={{ fontSize: 20 }}/>
+                    )}
+                  </span>
                   {column.render("Header", { setOpen, isDeliveryView })}
                   <div>{column.filter ? column.render("Filter") : ""}</div>
                 </TableCell>

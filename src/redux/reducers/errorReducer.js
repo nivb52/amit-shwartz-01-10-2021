@@ -2,18 +2,18 @@
 import { SET_ERROR, HIDE_ERROR } from "../actions/errorAction/types";
 
 const INITIAL_STATE = {
-  errorMsg: null,
-  errorTitle: null,
+  message: null,
+  title: "Error Ocurred",
   isOpen: false,
 };
 
  const errorReducer = (state = INITIAL_STATE, action) => {
-  const { error, errorTitle } = action;
+  const { message, title } = action;
   switch (action.type) {
     case SET_ERROR:
       return {
-        errorMsg: error,
-        errorTitle,
+        message,
+        title,
         isOpen: true,
       };
     case HIDE_ERROR:

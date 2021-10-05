@@ -17,11 +17,7 @@ export const fetchItemsList = () => async (dispatch) => {
       payload: data,
     });
   } catch (e) {
-    if (e.response) {
-      if (e.response.status > 400) {
-        dispatch({ type: SET_ERROR });
-      }
-    }
+    dispatch({ type: SET_ERROR, message: e.message });
     console.error(e);
   }
 };

@@ -151,7 +151,6 @@ const ModalForm = ({
             <DatePicker
               selected={formValues.delivery}
               onChange={(newValue) => {
-                console.log(newValue);
                 setFormValues({ ...formValues, delivery: newValue });
               }}
             />

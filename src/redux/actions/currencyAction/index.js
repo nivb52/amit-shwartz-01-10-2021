@@ -15,11 +15,10 @@ export const fetchCurrency = () => async (dispatch) => {
       payload: ILS / USD,
     });
   } catch (e) {
-    if (e.response) {
-      if (e.response.status > 400) {
-        dispatch({ type: SET_ERROR });
-      }
+    if(e.response.status !== 429){
+      dispatch({ type: SET_ERROR,  message: e.message });
     }
+    
     console.error(e);
   }
 };

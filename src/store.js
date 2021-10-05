@@ -25,7 +25,7 @@ const loadFromLocalStorage = () => {
   }
 };
 
-// localStorage.clear() //for cleaning unwanted objects
+localStorage.clear() //for cleaning unwanted objects
 const persistedState = loadFromLocalStorage();
 
 //for redux DevTools

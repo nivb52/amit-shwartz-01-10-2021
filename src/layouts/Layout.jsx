@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import ErrorModal from "../components/ErrorModal";
 import { fetchCurrency } from "../redux/actions/currencyAction";
 import Header from "./Header";
 import "./layout.scss";
@@ -16,6 +17,7 @@ const Layout = ({ fetchCurrency, children }) => {
 
   return (
     <>
+      <ErrorModal />
       <Header />
       <div className="site-layout">
         <main className="site-content">{children}</main>

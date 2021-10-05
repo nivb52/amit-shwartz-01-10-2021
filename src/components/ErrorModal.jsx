@@ -2,50 +2,36 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { hideError } from "../../redux/actions/errorAction";
+import { hideError } from "../redux/actions/errorAction";
 import { Modal } from "react-responsive-modal";
-import redWarning from "../../images/metro-warning.svg";
-import yellowWarning from "../../images/yellow-metro-warning.svg";
+import { Warning } from "@mui/icons-material";
 
-const ErrorModel = ({
-  isOpen,
-  errorMsg,
-  errorTitle,
-  hideError,
-  timeout,
-  warning,
-}) => {
-  if (isOpen && timeout) {
-    setTimeout(() => {
-      hideError();
-    }, 3000);
-  }
-
+const ErrorModel = ({ isOpen, message, title, hideError }) => {
   return (
     <Modal
       styles={{
-        modal: { maxWidth: "500px", textAlign: "center", padding: "35px" },
+        modal: {
+          maxWidth: "500px",
+          textAlign: "center",
+          padding: "35px",
+          borderRadius: "7px",
+        },
       }}
       center
       open={isOpen}
-      showCloseIcon={!timeout}
       onClose={hideError}
       animationDuration={0}
     >
-      <img
-        alt=""
-        style={{ width: "84px" }}
-        src={warning ? yellowWarning : redWarning}
-      />
-      <h2>{errorTitle}</h2>
-      <div className="paragraph">{errorMsg}</div>
+      <Warning sx={{ fontSize: 70 }} />
+      <h2>{title}</h2>
+      <p className="paragraph">{message}</p>
     </Modal>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { isOpen, errorMsg, errorTitle, timeout, warning } = state.error;
-  return { isOpen, errorMsg, errorTitle, timeout, warning };
+  const { isOpen, message, title } = state.error;
+  return { isOpen, message, title };
 };
 
 export default connect(mapStateToProps, { hideError })(ErrorModel);

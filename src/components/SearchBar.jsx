@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import OutsideAlerter from "../../Hooks";
+import { Search } from "@mui/icons-material";
+import React, { useState } from "react";
 
 const SearchBar = ({
   style,
@@ -17,7 +17,7 @@ const SearchBar = ({
   return (
     <div style={style} className={`search-container`}>
       <div>
-        <i className="fa fa-search"></i>
+        <Search/>
       </div>
       <input
         type="text"

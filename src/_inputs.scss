@@ -1,31 +1,68 @@
 .search-container {
-    width: calc(100% - 1.8rem);
+    width: calc(100% - 18px);
     transition: width ease-in-out 0.3s;
-    border: 1px solid $color-background-gray-dark;
+    border: 1px solid #EAEAEA;
     border-radius: 5px;
+
     div {
-      display: inline-block;
-      padding: 7px 11px;
-      outline: none;
-      background: $color-background-gray-light;
-      font-size: 17px;
-      border: none;
-      border-radius: 0 5px 5px 0;
-      cursor: pointer;
-      &:hover {
-        background: #ccc;
-      }
+        display: inline-block;
+        padding: 5px 8px;
+        outline: none;
+        background: #F7F7F7;
+        ;
+        font-size: 17px;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+    input[type="text"] {
+        display: inline-block;
+        width: calc(100% - 40px);
+        padding: 8.5px;
+        font-size: 14px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+    
+        &:focus {
+            outline: none;
+        }
+    }
+}
+.react-responsive-modal-modal{
+    overflow-y: unset !important;
+}
+.form{
+    label{
+        margin:10px;
+        width: 100%;
+        text-align: left;
     }
 }
 
-input[type="text"] {
-    display: inline-block;
-    width: calc(100% - 39px);
-    padding: 8.5px;
-    font-size: 1.4rem;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    &:focus {
-      outline: none;
-    }
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #ccc;
+    width: 100%;
+    // font-size: 12px;
+    padding: 1rem;
+  
+    border-radius: 5px;
+    display: block;
+    outline-color: #eeeeee;
+    -webkit-transition: outline 0.2s ease-in-out;
+    transition: outline 0.2s ease-in-out;
+  }
+  .price-input{
+      position: relative;
+      span{
+          font-weight: 500;
+          font-size: 16x;
+          color:inherit;
+          position: absolute;
+          top:50%;
+          transform:translateY(-50%) ;
+          right: 15px;
+      }
   }

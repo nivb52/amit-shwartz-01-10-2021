@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchCurrency } from "../redux/actions/currencyAction";
 import Header from "./Header";
-import "./layout.scss"
+import "./layout.scss";
 
-const Layout = ({ children }) => (
+const Layout = ({ fetchCurrency, children }) => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchCurrency();
+    }, 10000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [fetchCurrency]);
+
+  return (
     <>
       <Header />
       <div className="site-layout">
@@ -11,5 +23,6 @@ const Layout = ({ children }) => (
       {/* <Footer /> */}
     </>
   );
-  
-  export default Layout;
+};
+
+export default connect(null, { fetchCurrency })(Layout);

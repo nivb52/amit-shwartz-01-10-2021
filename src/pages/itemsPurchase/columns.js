@@ -1,56 +1,89 @@
-import { Archive } from "@mui/icons-material";
+import {
+  ArchiveOutlined,
+  ArchiveSharp,
+  Storefront,
+  UnarchiveSharp,
+} from "@mui/icons-material";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { IconButton } from "@mui/material";
+import { thousandSeparator } from "../../helpers";
 
 export const delivered_columns = [
   {
-    Header: () => (
+    Header: ({ setOpen, isDeliveryView }) => (
       <div
         style={{
-          disply: "flex",
+          display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
         <h2>
-          <ShoppingBagIcon />
-          Delivery
+          {isDeliveryView ? <Storefront /> : <ArchiveOutlined />}
+          {isDeliveryView ? "Delivery" : "Archive Items"}
         </h2>
-        <IconButton color="primary" aria-label="add item" component="span">
-          <AddShoppingCartIcon />
-        </IconButton>
+        {isDeliveryView ? (
+          <IconButton
+            onClick={() => setOpen((prev) => !prev)}
+            color="primary"
+            aria-label="add item"
+            component="span"
+          >
+            <AddShoppingCartIcon fontSize="large" />
+          </IconButton>
+        ) : (
+          ""
+        )}
       </div>
     ),
     id: "title",
+    Footer:"",
     columns: [
       {
         Header: "Item Name",
+        Footer:"",
         accessor: "title",
         filter: "fuzzyText",
       },
       {
-        Header: "store",
+        Header: "Store",
+        Footer:"",
         accessor: "store",
       },
       {
         Header: "Price",
+        Footer:"",
         accessor: "price",
-        Cell: ({ row, currency }) => {
-          return Number(row.original.price * currency).toFixed(2);
+        Cell: ({ row, currencySign }) => {
+          return `${currencySign}${(
+            Number(row.original.price).toFixed(2)
+          )}`;
         },
       },
       {
         Header: "Delivery Estimate",
+        Footer:"",
         accessor: "delivery",
       },
       {
-        Header: "סטטוס בקשה",
+        Header: "",
+        Footer:"",
         accessor: "Action",
-        Cell: ({ row, onclick }) => {
+        Cell: ({ row, action, isDeliveryView }) => {
+          console.log(row.original.id);
           return (
-            <IconButton color="success" aria-label="archived" component="span">
-              <Archive />
+            <IconButton
+              onClick={() => action(row.original.id)}
+              color={isDeliveryView ? "success" : "warning"}
+              aria-label="archived"
+              component="span"
+            >
+              {isDeliveryView ? (
+                <ArchiveSharp sx={{ fontSize: 30 }} />
+              ) : (
+                <UnarchiveSharp sx={{ fontSize: 30 }} />
+              )}
             </IconButton>
           );
         },

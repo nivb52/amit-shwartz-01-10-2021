@@ -2,14 +2,25 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export default function ComboBox({ noOptionsText, options, label, onChange }) {
+export default function AutoComplete({
+  noOptionsText,
+  options,
+  label,
+  onChange,
+  onInputChange
+}) {
+
+
+  const handleChange=()=>{
+
+  }
   return (
     <Autocomplete
+      onInputChange={onInputChange}
       onChange={onChange}
       noOptionsText={noOptionsText}
-      disablePortal
+      // disablePortal
       options={options}
-      sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label={label} />}
     />
   );

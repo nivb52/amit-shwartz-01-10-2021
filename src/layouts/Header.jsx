@@ -2,9 +2,11 @@
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import { DOLLAR_SIGN, SHEKEL_SIGN } from "../consts";
+import { setCurrency } from "../redux/actions/currencyAction";
 
 //const
 const menuItemTitles = [
@@ -13,10 +15,9 @@ const menuItemTitles = [
 ];
 const options = [SHEKEL_SIGN, DOLLAR_SIGN];
 
-const Header = () => {
+const Header = ({ setCurrency, currentCurrency }) => {
   //state
   const [active, setActive] = useState(menuItemTitles[0].id);
-  const [currency, setCurrency] = useState(SHEKEL_SIGN);
 
   return (
     <div className="header">
@@ -35,11 +36,16 @@ const Header = () => {
       ))}
       <Box sx={{ flexGrow: 1 }} />
       <Select
-        value={currency}
+        value={currentCurrency}
         onChange={(value) => setCurrency(value)}
         options={options}
       />
     </div>
   );
 };
-export default Header;
+
+const mapStateToProps = (state) => {
+  const { currentCurrency } = state.currency;
+  return { currentCurrency };
+};
+export default connect(mapStateToProps, { setCurrency })(Header);

@@ -1,7 +1,7 @@
 //store.js
 import { createStore, applyMiddleware, compose } from "redux";
 import reduxThunk from "redux-thunk";
-import reducers from "../redux/reducers";
+import reducers from "./redux/reducers";
 
 //save to the local storage
 const saveToLocalStorage = (state) => {

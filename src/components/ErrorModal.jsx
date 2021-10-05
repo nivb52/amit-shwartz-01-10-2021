@@ -24,7 +24,7 @@ const ErrorModel = ({
   return (
     <Modal
       styles={{
-        modal: { maxWidth: "50rem", textAlign: "center", padding: "3.5rem" },
+        modal: { maxWidth: "500px", textAlign: "center", padding: "35px" },
       }}
       center
       open={isOpen}
